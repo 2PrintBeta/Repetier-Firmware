@@ -55,11 +55,34 @@ To override EEPROM settings with config settings, set EEPROM_MODE 0
 // Arduino Due with RADDS     = 402
 // Arduino Due with RAMPS-FD  = 403
 // Arduino Due with RAMPS-FD V2 = 404
+// Arduino Due with BAM&DICE DUE = 406
 
-#define MOTHERBOARD 402
+#define MOTHERBOARD 406
 
 #include "pins.h"
 
+////////////////////////////////
+// HACK to make everything compiled
+////////////////////////////////////
+#define AXISCOMP_TANXY 0
+#define AXISCOMP_TANYZ 0
+#define AXISCOMP_TANXZ 0
+#define AUTORETRACT_ENABLED 0
+#define RETRACTION_UNDO_SPEED 0
+#define RETRACTION_UNDO_EXTRA_LONG_LENGTH 0
+#define RETRACTION_UNDO_EXTRA_LENGTH 0
+#define RETRACTION_Z_LIFT 0
+#define RETRACTION_SPEED 0
+#define RETRACTION_LONG_LENGTH 0
+#define RETRACTION_LENGTH 0
+#define EXT0_Z_OFFSET 0
+#define FEATURE_RETRACTION 0
+#define MIXING_EXTRUDER 0
+#define SD_STOP_HEATER_AND_MOTORS_ON_STOP 0
+#define SD_RUN_ON_STOP 0
+#define PAUSE_END_COMMANDS 0
+#define RETRACT_ON_PAUSE 0
+#define PAUSE_START_COMMANDS 0
 
 
 // Override pin definions from pins.h
@@ -84,7 +107,7 @@ is a full cartesian system where x, y and z moves are handled by separate motors
 Cases 1, 2, 8 and 9 cover all needed xy and xz H gantry systems. If you get results mirrored etc. you can swap motor connections for x and y.
 If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 */
-#define DRIVE_SYSTEM 3
+#define DRIVE_SYSTEM 0
 
 // ##########################################################################################
 // ##                               Calibration                                            ##
@@ -139,6 +162,7 @@ Overridden if EEPROM activated.*/
 #define YAXIS_STEPS_PER_MM 644.5
 /** \brief Number of steps for a 1mm move in z direction  Overridden if EEPROM activated.*/
 #define ZAXIS_STEPS_PER_MM 5120
+
 #endif
 
 // ##########################################################################################
@@ -192,7 +216,7 @@ Overridden if EEPROM activated.*/
 // 100 is AD595
 // 101 is MAX6675
 // 102 is MAX31855
-#define EXT0_TEMPSENSOR_TYPE 1
+#define EXT0_TEMPSENSOR_TYPE 8
 // Analog input pin for reading temperatures or pin enabling SS for MAX6675
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 // Which pin enables the heater
@@ -999,7 +1023,7 @@ to activate the quadratic term. Only adds lots of computations and storage usage
 */
 //#define BAUDRATE 76800
 //#define BAUDRATE 115200
-#define BAUDRATE 250000
+#define BAUDRATE 115200
 
 /**
 Some boards like Gen7 have a power on pin, to enable the atx power supply. If this is defined,
@@ -1204,8 +1228,9 @@ The following settings override uiconfig.h!
 13 or CONTROLLER_RAMBO = SeeMeCNC Display on Rambo (ORION)
 14 or CONTROLLER_OPENHARDWARE_LCD2004 = OpenHardware.co.za LCD2004 V2014
 15 or CONTROLLER_SANGUINOLOLU_PANELOLU2 = Sanguinololu + Panelolu2
+20 or CONTROLLER_BAM_DICE_DUE = BAM&DICE DUE with BAM&DICE Smart controller
 */
-#define FEATURE_CONTROLLER CONTROLLER_RADDS
+#define FEATURE_CONTROLLER CONTROLLER_BAM_DICE_DUE
 
 /**
 Select the language to use.
@@ -1222,8 +1247,8 @@ Select the language to use.
 #define UI_LANGUAGE 1
 
 // This is line 2 of the status display at startup. Change to your like.
-#define UI_PRINTER_NAME "RaddsMini"
-#define UI_PRINTER_COMPANY "MarioRADDS"
+#define UI_PRINTER_NAME "BAM&DICE"
+#define UI_PRINTER_COMPANY "2PRINTBETA"
 
 
 /** Animate switches between menus etc. */

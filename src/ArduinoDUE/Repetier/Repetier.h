@@ -147,7 +147,7 @@ usage or for seraching for memory induced errors. Switch it off for production, 
 #define CONTROLLER_GATE_3NOVATICA 18
 #define CONTROLLER_SPARKLCD 19
 #define CONTROLLER_FELIX_DUE 405
-
+#define CONTROLLER_BAM_DICE_DUE 20
 //direction flags
 #define X_DIRPOS 1
 #define Y_DIRPOS 2
